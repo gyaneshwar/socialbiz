@@ -13,10 +13,31 @@ function GetNormalWindow(workID, url, nextTrId, lnkFlag) {
     }, 1000);
 }
 
+var monitor = "";
+
+function refreshOperation(){
+    try{
+         var refreshHandler = monitor.replace("hand","refresh");
+         if(debug){
+            console.log("refresh operation");
+            console.log(monitor);
+            console.log("relative refresh handler:"+refreshHandler);
+         }
+         $("#" + refreshHandler).click();
+         monitor = "";
+    }
+    catch(e){console.log(e);}
+}
+
 function basicOperation() {
 try{
     var x = $("span[onclick]");
     var handler = "#" + x[x.length - 2].id;
+    if(monitor === handler){
+        refreshOperation();
+    }else{
+        monitor = handler;
+    }
     if(debug){
     console.log(x);
     console.log(x[x.length - 2]);
@@ -30,7 +51,7 @@ try{
     clearInterval(processId);    
     }
 }
-catch(e){console.log(e);}
+catch(e){console.log(e); refreshOperation();}
 }
 var processId = setInterval(basicOperation, 32000);
 var debug = false;
