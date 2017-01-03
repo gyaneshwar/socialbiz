@@ -23,7 +23,7 @@ function refreshOperation(){
             console.log(monitor);
             console.log("relative refresh handler:"+refreshHandler);
          }
-         $("#" + refreshHandler).click();
+         $(refreshHandler).click();
          monitor = "";
     }
     catch(e){console.log(e);}
