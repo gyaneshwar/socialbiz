@@ -53,6 +53,6 @@ try{
 }
 catch(e){console.log(e); refreshOperation();}
 }
-var processId = setInterval(basicOperation, 32000);
+var processId = setInterval(basicOperation, 45000);
 var debug = false;
 console.log("Started process with process Id:"+processId);
